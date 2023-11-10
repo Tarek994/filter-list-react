@@ -1,15 +1,54 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Table from 'react-bootstrap/Table';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { data } from './data.js';
+import { data } from "./data";
 
 function App() {
+  const [search, setSearch] = useState('');
   return (
-    <div className="App">
+    <div  className='bg-dark'>
+      <Container>
+        <h1 className='text-center mt-4 text-light'>Filter search input</h1>
+        <Form>
+          <InputGroup className='my-3'>
 
+            {/* onChange for search */}
+            <Form.Control
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder='Type to search'
+            />
+          </InputGroup>
+        </Form>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data
+              .filter((item) => {
+                return search.toLowerCase() === ''
+                  ? item
+                  : item.first_name.toLowerCase().includes(search);
+              })
+              .map((item, index) => (
+                <tr key={index}>
+                  <td>{item.first_name}</td>
+                  <td>{item.last_name}</td>
+                  <td>{item.email}</td>
+                  <td>{item.phone}</td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
+      </Container>
     </div>
   );
 }
