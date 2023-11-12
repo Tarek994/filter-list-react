@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <Container>
-        <h1 className='text-center mt-4 text-light'>Filter search input</h1>
+        <h1 className='text-center mt-4'>Filter search input</h1>
         <Form>
           <InputGroup className='my-3'>
 
