@@ -9,7 +9,7 @@ import { data } from "./data";
 function App() {
   const [search, setSearch] = useState('');
   return (
-    <div  className='bg-dark'>
+    <div>
       <Container>
         <h1 className='text-center mt-4 text-light'>Filter search input</h1>
         <Form>
